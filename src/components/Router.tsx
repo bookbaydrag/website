@@ -5,13 +5,24 @@ import Search from '../pages/Search';
 function Router() {
   return (
     <Switch>
-      <Route path="/persons/:id">
+      <Route path={[
+        '/p/:slug/:id',
+        '/p/:id',
+        '/p',
+      ]}>
         <Persons />
       </Route>
-      <Route path="/events/:id">
+      <Route path={[
+        '/e/:slug/:id',
+        '/e/:id',
+        '/e',
+      ]}>
         <Persons />
       </Route>
-      <Route path="/search">
+      <Route path={[
+        's/:term',
+        '/s',
+      ]}>
         <Search />
       </Route>
       <Route path="/">

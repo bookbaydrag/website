@@ -2,17 +2,18 @@ import { useParams } from 'react-router-dom';
 import { useNoIdRedirect } from '../util/hooks';
 
 type EventsParams = {
-  id: string
+  slug: string;
+  id: string;
 }
 
 function Events() {
-  const { id } = useParams<EventsParams>();
+  const { slug, id } = useParams<EventsParams>();
 
   useNoIdRedirect(id);
 
   return (
     <div>
-      Event {id}
+      Event {slug} {id}
     </div>
   );
 };
