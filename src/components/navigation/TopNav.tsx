@@ -26,3 +26,57 @@ function TopNav() {
 }
 
 export default TopNav;
+
+
+/*
+header
+  container flex box row: justify content space between;
+    title
+      text
+    menu
+      icon
+  dropDown position absolute
+    link
+    link
+    link
+
+*/
+
+export const Header = styled.header`
+  height: 30px;
+  width: 
+
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const Title = styled.div`
+  
+`;
+
+export const Text = styled.span`
+
+`;
+
+export const Menu = styled.div`
+
+`;
+
+export const Icon = styled.img`
+
+`;
+
+export const DropDown = styled.div`
+  display: flex;
+  position: absolute;
+`;
+
+export const Links = styled.a`
+  
+`;
+
+
