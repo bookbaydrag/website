@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import TopNav from './components/navigation/TopNav';
 import GlobalStyles from './styles/GlobalStyles';
 import Router from './components/Router';
+import UserContext from './components/UserContext';
 
 const BodyWrapper = styled.div`
   width: 800;
@@ -14,8 +15,10 @@ function App() {
     <BrowserRouter>
       <GlobalStyles />
       <BodyWrapper>
-        <TopNav />
-        <Router />
+        <UserContext>
+          <TopNav />
+          <Router />
+        </UserContext>
       </BodyWrapper>
     </BrowserRouter>
   );

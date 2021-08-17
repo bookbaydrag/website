@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PersonCard from '../components/person/PersonCard';
 import { useDeBounce } from '../util/hooks';
-import { PersonType } from '../util/types';
+import { BBDPerson } from '../util/types';
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,7 +18,7 @@ function Search() {
     search();
   };
 
-  const list = searchResults.map((person: PersonType)=>{
+  const list = searchResults.map((person: BBDPerson)=>{
     return <PersonCard key={person._id} personData={person} />;
   });
 

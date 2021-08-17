@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { PersonType } from '../../util/types';
+import { BBDPerson } from '../../util/types';
 
 export type PersonCardProps = {
-  personData: PersonType
+  personData: BBDPerson
 }
 
 const PersonCard = ({ personData }: PersonCardProps): JSX.Element =>{
