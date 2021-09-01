@@ -1,22 +1,21 @@
 import { BrowserRouter } from 'react-router-dom';
-import styled from 'styled-components';
 import TopNav from './components/navigation/TopNav';
 import GlobalStyles from './styles/GlobalStyles';
 import Router from './components/Router';
-
-const BodyWrapper = styled.div`
-  width: 800;
-  margin: auto;
-`;
+import { Provider } from 'react-redux';
+import store from './util/store';
+import BodyWrapper from './components/BodyWrapper';
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <BodyWrapper>
-        <TopNav />
-        <Router />
-      </BodyWrapper>
+      <Provider store={store} >
+        <BodyWrapper>
+          <TopNav />
+          <Router />
+        </BodyWrapper>
+      </Provider>
     </BrowserRouter>
   );
 }

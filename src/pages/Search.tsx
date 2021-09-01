@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import PersonCard from '../components/person/PersonCard';
+import { fetchBBD } from '../util/api/etc';
 import { useDeBounce } from '../util/hooks';
-import { PersonType } from '../util/types';
+import { BBDPerson } from '../util/types';
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<any>([]);
 
   const search = useDeBounce(async ()=>{
-    const res = await fetch('http://localhost:8000/api/v1/persons');
+    const res = await fetchBBD('persons', 'GET');
     const list = await res.json();
     setSearchResults(list);
   }, 500);
@@ -18,7 +19,7 @@ function Search() {
     search();
   };
 
-  const list = searchResults.map((person: PersonType)=>{
+  const list = searchResults.map((person: BBDPerson)=>{
     return <PersonCard key={person._id} personData={person} />;
   });
 

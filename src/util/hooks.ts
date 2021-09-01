@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
+import { AppDispatch, RootState } from './store';
 
 export function useQuery(query: string ): string | null {
   const searchParams = new URLSearchParams(useLocation().search);
@@ -33,3 +35,6 @@ export function useNoIdRedirect(id: string) {
     }
   }, [id]);
 }
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
