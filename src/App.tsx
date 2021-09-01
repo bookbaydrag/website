@@ -5,12 +5,16 @@ import Router from './components/Router';
 import { Provider } from 'react-redux';
 import store from './util/store';
 import BodyWrapper from './components/BodyWrapper';
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyles />
       <Provider store={store} >
+        <Helmet>
+          <title>Book Bay Drag</title>
+        </Helmet>
         <BodyWrapper>
           <TopNav />
           <Router />
