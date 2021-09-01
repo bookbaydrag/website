@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import PersonCard from '../components/person/PersonCard';
 import { fetchBBD } from '../util/api/etc';
 import { useDeBounce } from '../util/hooks';
@@ -25,6 +26,9 @@ function Search() {
 
   return (
     <div>
+      <Helmet>
+        <title>Book Bay Drag - Search</title>
+      </Helmet>
       <form>
         <input
           type="text"

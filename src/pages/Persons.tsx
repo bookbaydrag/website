@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { useNoIdRedirect } from '../util/hooks';
 
@@ -13,6 +14,9 @@ function Persons() {
 
   return (
     <div>
+      <Helmet>
+        {/* TODO: add title */}
+      </Helmet>
       Person {slug} {id}
     </div>
   );
