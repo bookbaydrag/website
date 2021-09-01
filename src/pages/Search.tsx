@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PersonCard from '../components/person/PersonCard';
+import { fetchBBD } from '../util/api/etc';
 import { useDeBounce } from '../util/hooks';
 import { BBDPerson } from '../util/types';
 
@@ -8,7 +9,7 @@ function Search() {
   const [searchResults, setSearchResults] = useState<any>([]);
 
   const search = useDeBounce(async ()=>{
-    const res = await fetch('http://localhost:8000/api/v1/persons');
+    const res = await fetchBBD('persons', 'GET');
     const list = await res.json();
     setSearchResults(list);
   }, 500);

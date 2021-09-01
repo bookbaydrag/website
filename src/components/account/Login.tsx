@@ -1,4 +1,5 @@
 import { FormEventHandler, useState } from 'react';
+import { requestMagicLink } from '../../util/api/account';
 
 function Login() {
   const [email, setEmail] = useState<string>('');
@@ -6,7 +7,8 @@ function Login() {
 
   const submit: FormEventHandler = (e)=>{
     e.preventDefault();
-    console.log(email);
+    requestMagicLink(email);
+    // requestMagicLink('seannyphoenix@gmail.com');
     setSubmitted(true);
   };
 

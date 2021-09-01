@@ -1,37 +1,17 @@
+// import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import AccountDetails from '../components/account/AccountDetails';
 import Login from '../components/account/Login';
-import { Context } from '../components/UserContext';
-import { useMagicLink } from '../util/hooks';
-import { BBDAccount } from '../util/types';
-
-type AccountParams = {
-  token?: string;
-}
+import { useMagicLink, useSession } from '../util/api/session';
+import { RouteAccountParams } from '../util/types';
 
 function Account() {
-  const { token } = useParams<AccountParams>();
+  const { token } = useParams<RouteAccountParams>();
+  const session = useSession();
+
   useMagicLink(token);
 
-  const account = localStorage.getItem('account'); // useAccount();
-
-  console.log('account:', account);
-
-  function renderAccount(value: BBDAccount | undefined) {
-    if (value) {
-      return (
-        <div>
-          {JSON.stringify(value)}
-        </div>
-      );
-    }
-    return (
-      <div>
-        no account
-      </div>
-    );
-  }
-
-  if (!account) {
+  if (!session) {
     return (
       <div>
         <Login />
@@ -39,9 +19,9 @@ function Account() {
     );
   } else {
     return (
-      <Context.Consumer>
-        {renderAccount}
-      </Context.Consumer>
+      <div>
+        <AccountDetails />
+      </div>
     );
   }
 }

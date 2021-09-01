@@ -21,6 +21,7 @@ function TopNav() {
     <NavWrapper>
       <Link to="/" component={NavLink}>Home</Link>
       <Link to="/search" component={NavLink}>Search</Link>
+      <Link to="/account" component={NavLink}>Account</Link>
     </NavWrapper>
   );
 }

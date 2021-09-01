@@ -1,4 +1,7 @@
-export type BBDToken = string | undefined;
+export type BBDAccount = {
+  _id: string;
+  email: string;
+}
 
 export type BBDPerson = {
   _id: string;
@@ -6,11 +9,17 @@ export type BBDPerson = {
   pronouns?: string;
 }
 
-export type BBDAccount = {
+export type BBDSession = {
   _id: string;
-  email: string;
-}
+  account: BBDAccount;
+} | null;
+
+export type BBDToken = string | undefined;
 
 export type RoutePersonsParams = {
   id: string;
+}
+
+export type RouteAccountParams = {
+  token: string;
 }
