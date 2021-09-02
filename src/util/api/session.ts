@@ -41,7 +41,7 @@ export function usePollSession(): void {
 
 export async function logIn(token: string): Promise<BBDAccount | null> {
   try {
-    const res = await fetchBBD('sessions', 'POST', { token });
+    const res = await fetchBBD('sessions', 'POST', { body: { token } });
     await validateSuccess(res);
     const account: BBDAccount = await res.json();
     return account;

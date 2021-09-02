@@ -1,10 +1,10 @@
 import { getSession } from '../store';
 
 // For testing local server build
-// export const baseUrl = 'http://localhost:8000/v1';
+export const baseUrl = 'http://localhost:8000/v1';
 
 // For production server
-export const baseUrl = 'https://api.bookbaydrag.com/v1';
+// export const baseUrl = 'https://api.bookbaydrag.com/v1';
 
 export async function validateSuccess(res: Response) {
   if (!(res.status<400)) {
@@ -43,6 +43,7 @@ const httpErrors: {[status: string]: string} = {
 
 type HTTPRoutes =
 'persons'|
+'personas/search' |
 'sessions' |
 'tokens'
 
@@ -55,12 +56,17 @@ type HTTPMethod =
 export async function fetchBBD(
     route: HTTPRoutes,
     method: HTTPMethod,
-    body: unknown = null,
-    id: string = '',
+    options: {
+      body?: unknown,
+      id?: string,
+      searchTerm?: string,
+    } = {},
 ): Promise<Response> {
   const session = getSession();
+  const { body, id, searchTerm } = options;
+
   return fetch(
-      `${baseUrl}/${route}/${id}`,
+      `${baseUrl}/${route}/${id ? id : searchTerm ? searchTerm : ''}`,
       {
         method,
         headers: {
