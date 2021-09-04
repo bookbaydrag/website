@@ -6,7 +6,7 @@ export type BBDAccount = {
 
 export type BBDPersona = {
   _id?: string,
-  dragName: string;
+  stageName: string;
   pronouns: string;
 }
 
