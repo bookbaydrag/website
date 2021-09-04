@@ -69,13 +69,13 @@ const PersonaCard = ({
     <div>
       <form onSubmit={handleAddOrUpdate} >
         <fieldset name="basics" disabled={!edit}>
-          <label htmlFor="dragName">Drag Name</label>
+          <label htmlFor="stageName">Stage Name</label>
           <input
             ref={focusRef}
             type="text"
-            id="dragName"
-            name="dragName"
-            value={data.dragName}
+            id="stageName"
+            name="stageName"
+            value={data.stageName}
             onChange={handleFieldChange}
           />
           <label htmlFor="pronouns">Pronouns</label>

@@ -3,7 +3,7 @@ import { fetchBBD, validateSuccess } from './etc';
 import { validateSession } from './session';
 
 export const newPersona: BBDPersona = {
-  dragName: '',
+  stageName: '',
   pronouns: '',
 };
 
