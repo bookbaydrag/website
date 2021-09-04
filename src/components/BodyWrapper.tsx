@@ -1,11 +1,16 @@
-import { usePollSession } from '../util/api/session';
+import { useEffect } from 'react';
+import { checkSession } from '../util/api/session';
 
 type BodyWrapperProps = {
   children: React.ReactNode
 }
 
 function BodyWrapper({ children }: BodyWrapperProps) {
-  usePollSession();
+  useEffect(()=>{
+    checkSession();
+    window.addEventListener('focus', checkSession);
+  }, []);
+
   return (
     <div>
       {children}

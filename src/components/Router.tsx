@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import Account from '../pages/Account';
-import Persons from '../pages/Persons';
+import Personas from '../pages/Personas';
 import Search from '../pages/Search';
 
 function Router() {
@@ -19,7 +19,7 @@ function Router() {
         '/persons/:id',
         '/persons',
       ]}>
-        <Persons />
+        <Personas />
       </Route>
 
       <Route path={[
@@ -27,7 +27,7 @@ function Router() {
         '/e/:id',
         '/e',
       ]}>
-        <Persons />
+        <Personas />
       </Route>
 
       <Route path={[
