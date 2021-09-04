@@ -1,10 +1,10 @@
 import { getSession } from '../store';
 
 // For testing local server build
-export const baseUrl = 'http://localhost:8000/v1';
+// export const baseUrl = 'http://localhost:8000/v1';
 
 // For production server
-// export const baseUrl = 'https://api.bookbaydrag.com/v1';
+export const baseUrl = 'https://api.bookbaydrag.com/v1';
 
 export async function validateSuccess(res: Response) {
   if (!(res.status<400)) {
