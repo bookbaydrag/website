@@ -12,22 +12,22 @@ function Account() {
 
   useMagicLink(token);
 
-  if (!session) {
-    return (
-      <div>
-        <Helmet>
-          <title>Book Bay Drag - Log In</title>
-        </Helmet>
-        <Login />
-      </div>
-    );
-  } else {
+  if (session) {
     return (
       <div>
         <Helmet>
           <title>Book Bay Drag - Account</title>
         </Helmet>
         <AccountDetails />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Helmet>
+          <title>Book Bay Drag - Log In</title>
+        </Helmet>
+        <Login />
       </div>
     );
   }

@@ -1,11 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
-  body {
-    width: 800px;
-    margin: auto;
-  }
-  /* 
+const GlobalStyles = createGlobalStyle`   
   * {
     margin: 0;
     padding: 0;
@@ -22,10 +17,19 @@ const GlobalStyles = createGlobalStyle`
     margin: auto;
     box-sizing: border-box;
     position: relative;
-    background-color: #001111;
-    color: #FFEECC;
-    font-family: 'Fira Code', monospace, sans-serif;
-  } */
+    /* background-color: #002222; */
+    /* color: #FFEECC; */
+    /* font-family: 'Fira Code', monospace, sans-serif; */
+  }
+
+  body {
+    width: 800px;
+    margin: auto;
+  }
+
+  fieldset {
+    border: none;
+  }
 `;
 
 export default GlobalStyles;

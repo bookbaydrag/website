@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { fetchBBD, validateSuccess } from './etc';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { setSession, setSessionReducer } from '../store';
-import { BBDAccount, BBDToken } from '../types';
+import { getSession, setSession, setSessionReducer } from '../store';
+import { BBDSession, BBDToken } from '../types';
 
 export function useMagicLink(token: BBDToken) {
   const { replace } = useHistory();
@@ -27,24 +27,30 @@ export function useSession() {
   return session;
 }
 
-export function usePollSession(): void {
-  const session = useSession();
-  const dispatch = useAppDispatch();
+export async function checkSession() {
+  // session in Redux store
+  const currentSession = getSession();
+  // session in localStorage
+  const newSession: BBDSession = JSON.parse(
+      localStorage.getItem('session') || 'null',
+  );
 
-  useEffect(()=>{
-    const newSession = JSON.parse(localStorage.getItem('session') || 'null');
-    if (newSession !== session) {
-      dispatch(setSessionReducer(newSession));
-    }
-  }, []);
+  if (
+    JSON.stringify(newSession) !==
+    JSON.stringify(currentSession)
+  ) {
+    // if not the same, replace the Redux version
+    // with the version in localStorage
+    setSession(newSession);
+  }
 }
 
-export async function logIn(token: string): Promise<BBDAccount | null> {
+export async function logIn(token: string): Promise<BBDSession | null> {
   try {
     const res = await fetchBBD('sessions', 'POST', { body: { token } });
     await validateSuccess(res);
-    const account: BBDAccount = await res.json();
-    return account;
+    const session: BBDSession = await res.json();
+    return session;
   } catch (error) {
     return null;
   }
@@ -53,4 +59,15 @@ export async function logIn(token: string): Promise<BBDAccount | null> {
 export function logOut() {
   fetchBBD('sessions', 'DELETE');
   setSession(null);
+}
+
+export async function validateSession(): Promise<void> {
+  try {
+    const res = await fetchBBD('sessions', 'PUT');
+    await validateSuccess(res);
+    const session: BBDSession = await res.json();
+    setSession(session);
+  } catch (error) {
+    setSession(null);
+  }
 }

@@ -7,7 +7,7 @@ type PersonsParams = {
   id: string;
 }
 
-function Persons() {
+function Personas() {
   const { slug, id } = useParams<PersonsParams>();
 
   useNoIdRedirect(id);
@@ -17,9 +17,9 @@ function Persons() {
       <Helmet>
         {/* TODO: add title */}
       </Helmet>
-      Person {slug} {id}
+      Persona {slug} {id}
     </div>
   );
 };
 
-export default Persons;
+export default Personas;

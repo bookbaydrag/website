@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import PersonCard from '../components/person/PersonCard';
+import PersonaCard from '../components/PersonaCard';
 import { fetchBBD, validateSuccess } from '../util/api/etc';
 import { useDeBounce } from '../util/hooks';
-import { BBDPerson } from '../util/types';
+import { BBDPersona } from '../util/types';
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,8 +25,11 @@ function Search() {
     search();
   };
 
-  const list = searchResults.map((persona: BBDPerson)=>{
-    return <PersonCard key={persona._id} personData={persona} />;
+  const list = searchResults.map((persona: BBDPersona)=>{
+    return <PersonaCard
+      key={persona._id}
+      personaData={persona}
+    />;
   });
 
   return (
@@ -42,10 +45,9 @@ function Search() {
           value={searchTerm}
         />
       </form>
-      <ul>
+      <div>
         {list}
-      </ul>
-      {/* {JSON.stringify(searchResults, null, 2)} */}
+      </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@ export const baseUrl = 'http://localhost:8000/v1';
 
 export async function validateSuccess(res: Response) {
   if (!(res.status<400)) {
-    const message: string = ( await res.json() ).error;
+    const message: string = (await res.json()).error;
     throw new ServerError(
         res.status,
         message,
@@ -42,7 +42,7 @@ const httpErrors: {[status: string]: string} = {
 };
 
 type HTTPRoutes =
-'persons'|
+'personas' |
 'personas/search' |
 'sessions' |
 'tokens'

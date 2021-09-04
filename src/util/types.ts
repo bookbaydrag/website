@@ -1,12 +1,13 @@
 export type BBDAccount = {
   _id: string;
   email: string;
+  personas: BBDPersona[];
 }
 
-export type BBDPerson = {
-  _id: string;
+export type BBDPersona = {
+  _id?: string,
   dragName: string;
-  pronouns?: string;
+  pronouns: string;
 }
 
 export type BBDSession = {
