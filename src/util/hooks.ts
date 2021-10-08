@@ -3,9 +3,23 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { AppDispatch, RootState } from './store';
 
-export function useQuery(query: string ): string | null {
-  const searchParams = new URLSearchParams(useLocation().search);
-  return searchParams.get(query);
+
+/**
+ *
+ * @param {string} query
+ * @return {string | null | undefined }
+ */
+export function useQuery(query: string ): string | null | undefined {
+  const [searchParams, setSearchParams] = useState<URLSearchParams>();
+
+  const location = useLocation();
+
+  useEffect(()=>{
+    console.log(location);
+    setSearchParams(new URLSearchParams(location.search));
+  }, [location]);
+
+  return searchParams?.get(query);
 };
 
 export function useDeBounce(

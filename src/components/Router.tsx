@@ -22,23 +22,23 @@ function Router() {
         <Personas />
       </Route>
 
-      <Route path={[
+      {/* <Route path={[
         '/e/:slug/:id',
         '/e/:id',
         '/e',
       ]}>
-        <Personas />
-      </Route>
+        <Events />
+      </Route> */}
 
-      <Route path={[
+      {/* <Route path={[
         '/search/:term',
         '/search',
       ]}>
         <Search />
-      </Route>
+      </Route> */}
 
       <Route path="/">
-        <div>home</div>
+        <Search />
       </Route>
 
     </Switch>

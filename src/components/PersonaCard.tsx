@@ -1,4 +1,16 @@
 import { FormEventHandler, useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
+import {
+  Button,
+  Field,
+  Fieldset,
+  Form,
+  Label,
+  Submit,
+  TextInput,
+} from '../styles/form.styles';
+import { COLORS } from '../styles/global.styles';
+// import { COLORS } from '../styles/global.styles';
 import {
   addPersona,
   deletePersona,
@@ -6,12 +18,18 @@ import {
 } from '../util/api/persona';
 import { BBDPersona } from '../util/types';
 
+const Card = styled.div`
+  width: fit-content;
+  border: solid 1px lightgray;
+  margin: 10px 0 10px 0;
+  background-color: ${COLORS.brown};
+`;
+
 export type PersonCardProps = {
   personaData: BBDPersona;
   admin?: boolean;
   cancel?: ()=>void;
 }
-
 
 const PersonaCard = ({
   personaData,
@@ -66,56 +84,80 @@ const PersonaCard = ({
   }, [edit]);
 
   return (
-    <div>
-      <form onSubmit={handleAddOrUpdate} >
-        <fieldset name="basics" disabled={!edit}>
-          <label htmlFor="stageName">Stage Name</label>
-          <input
-            ref={focusRef}
-            type="text"
-            id="stageName"
-            name="stageName"
-            value={data.stageName}
-            onChange={handleFieldChange}
-          />
-          <label htmlFor="pronouns">Pronouns</label>
-          <input
-            type="text"
-            id="pronouns"
-            name="pronouns"
-            value={data.pronouns}
-            onChange={handleFieldChange}
-          />
-        </fieldset>
+    <Card>
+      <Form
+        onSubmit={handleAddOrUpdate}
+      >
+        <Fieldset
+          flexDirection="row"
+          name="basics"
+          disabled={!edit}
+        >
+          <Field>
+            <Label
+              htmlFor="stageName"
+            >
+              Stage Name
+            </Label>
+            <TextInput
+              ref={focusRef}
+              type="text"
+              id="stageName"
+              name="stageName"
+              value={data.stageName}
+              onChange={handleFieldChange}
+              error={false}
+            />
+          </Field>
+          <Field>
+            <Label
+              htmlFor="pronouns"
+            >
+              Pronouns
+            </Label>
+            <TextInput
+              type="text"
+              id="pronouns"
+              name="pronouns"
+              value={data.pronouns}
+              onChange={handleFieldChange}
+              error={false}
+            />
+          </Field>
+        </Fieldset>
         {/* <fieldset name="demographics" disabled={!edit}>
           <legend>Demographics</legend>
         </fieldset> */}
-        <fieldset>
+        <Fieldset
+          flexDirection='row'
+        >
           {admin ?
-            <input
-              type="button"
-              value={edit ? 'Cancel' : 'Edit'}
-              onClick={handleEditCancel} />:
+            <Button
+              onClick={handleEditCancel}
+            >
+              {edit ? 'Cancel' : 'Edit'}
+            </Button> :
               null
           }
           {admin && edit ?
-            <input
+            <Submit
               type="submit"
               value="Submit"
             /> :
             null
           }
           {admin && !cancel ?
-            <input
-              type="button"
-              value="Delete"
+            <Button
               onClick={handleDelete}
-            /> :
+            >
+              Delete
+            </Button> :
             null
           }
-        </fieldset>
-      </form>
-    </div>
+        </Fieldset>
+      </Form>
+
+    </Card>
   );
 };
 
