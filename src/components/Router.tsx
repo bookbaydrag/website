@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import Account from '../pages/Account';
+import Home from '../pages/Home';
 import Personas from '../pages/Personas';
-import Search from '../pages/Search';
 
 function Router() {
   return (
@@ -38,7 +38,7 @@ function Router() {
       </Route> */}
 
       <Route path="/">
-        <Search />
+        <Home />
       </Route>
 
     </Switch>

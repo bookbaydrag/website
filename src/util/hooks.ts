@@ -3,6 +3,9 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { AppDispatch, RootState } from './store';
 
+export function useTitle(page: string, info?: string): string {
+  return `Book Bay Drag - ${page}${info?` - ${info}`:''}`;
+}
 
 /**
  *
@@ -15,7 +18,6 @@ export function useQuery(query: string ): string | null | undefined {
   const location = useLocation();
 
   useEffect(()=>{
-    console.log(location);
     setSearchParams(new URLSearchParams(location.search));
   }, [location]);
 

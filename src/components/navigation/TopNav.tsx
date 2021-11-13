@@ -1,40 +1,22 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import {
+  NavInset,
+  NavLink,
+  NavTitle,
+  NavWrapper,
+} from '../../styles/nav.styles';
 
-const NavWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 5px 0 5px 0;
-`;
-
-const NavLink = styled.a`
-  height: 2em;
-  width: auto;
-  padding: 5px;
-  margin: 0 5px 0 5px;
-  text-decoration: none;
-  cursor: pointer;
-  color: black;
-
-  :hover {
-    color: darkgray;
-  }
-
-  :active {
-    color: darkgreen;
-  }
-
-  :visited {
-    color: black;
-  }
-`;
 
 function TopNav() {
   return (
     <NavWrapper>
-      <Link to="/" component={NavLink}>Home</Link>
-      {/* <Link to="/search" component={NavLink}>Search</Link> */}
-      <Link to="/account" component={NavLink}>Account</Link>
+      <NavInset>
+        <NavTitle>Book Bay Drag</NavTitle>
+        <Link to="/" component={NavLink}>Home</Link>
+        {/* <Link to="/search" component={NavLink}>Search</Link> */}
+        <Link to="/account" component={NavLink}>Account</Link>
+      </NavInset>
     </NavWrapper>
   );
 }

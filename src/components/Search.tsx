@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router';
-import styled from 'styled-components';
-import PersonaCard from '../components/PersonaCard';
-import { Field, Fieldset, Form, Label, TextInput } from '../styles/form.styles';
+import PersonaCard from './PersonaCard';
+import {
+  Fieldset,
+  Form,
+  Label,
+  // Submit,
+  TextInput,
+} from '../styles/form.styles';
 import { SectionHeading } from '../styles/global.styles';
+import { Page } from '../styles/pages.styles';
 import { PersonaList } from '../styles/persona.styles';
 import { fetchBBD, validateSuccess } from '../util/api/etc';
-import { useDeBounce, useQuery } from '../util/hooks';
+import { useDeBounce, useQuery, useTitle } from '../util/hooks';
 import { BBDPersona } from '../util/types';
-
-const SearchPage = styled.div`
-  padding: 5px;
-  margin: 0 5px 0 5px;
-`;
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,6 +22,7 @@ function Search() {
   const [runningSearch, setRunningSearch] = useState(false);
   const searchQuery = useQuery('search');
   const { replace } = useHistory();
+  const title = useTitle('Search', searchTerm);
 
   useEffect(()=>{
     if (searchQuery && !searchTerm.length) {
@@ -62,33 +64,20 @@ function Search() {
     />;
   });
 
-  function renderTitle() {
-    return (
-      // eslint-disable-next-line max-len
-      <title>Book Bay Drag - Search{searchTerm ? ` - ${searchTerm}` : ''}</title>
-    );
-  }
-
   return (
-    <SearchPage>
+    <Page>
       <Helmet>
-        {renderTitle()}
+        <title>{title}</title>
       </Helmet>
-      <Form>
+      <Form onSubmit={()=>{}}>
         <Fieldset flexDirection='column'>
-          <Field>
-            <Label
-              htmlFor="search"
-            >
-              Search
-            </Label>
-            <TextInput
-              type="text"
-              name="search"
-              onChange={searchTermChange}
-              value={searchTerm}
-            />
-          </Field>
+          <Label htmlFor="search">Search</Label>
+          <TextInput
+            type="text"
+            name="search"
+            onChange={searchTermChange}
+            value={searchTerm}
+          />
         </Fieldset>
       </Form>
       {searchTerm.length ?
@@ -103,7 +92,7 @@ function Search() {
         </div> :
         null
       }
-    </SearchPage>
+    </Page>
   );
 };
 

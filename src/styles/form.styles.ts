@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { COLORS } from './global.styles';
 
+const formItemMargin = '0 1em .5em 0';
+
 export const Form = styled.form`
   width: fit-content;
   height: auto;
@@ -12,23 +14,19 @@ type FieldsetProps = {
   flexDirection: 'row' | 'column';
 }
 
+const justifyContent = {
+  column: 'flex-start',
+  row: 'space-between',
+};
+
 export const Fieldset = styled.fieldset<FieldsetProps>`
   width: fit-content;
   height: auto;
   display: flex;
   flex-direction: ${(props)=>props.flexDirection};
+  justify-content: ${(props)=>justifyContent[props.flexDirection]};
   border: none;
-  margin: 5px;
-  justify-content: ${(props)=>{
-    switch (props.flexDirection ) {
-      case 'column':
-        return 'flex-start';
-      case 'row':
-        return 'space-between';
-    }
-  }}
 `;
-
 
 export const Field = styled.div`
   width: 100%;
@@ -39,7 +37,7 @@ export const Field = styled.div`
 `;
 
 export const Label = styled.label`
-  margin-bottom: 5px;
+  margin: ${formItemMargin};
 `;
 
 type InputProps = {
@@ -47,17 +45,18 @@ type InputProps = {
 }
 
 export const TextInput = styled.input<InputProps>`
-  border: solid 1px lightgray;
+  border: none;
+  border-style: solid;
+  border-width: 0 0 1.5px 1.5px;
+  border-color: ${(props)=>{
+    return props.error ? COLORS.red : COLORS.black;
+  }};
   height: 1.5rem;
-  background-color: ${COLORS.paper};
-  ${(props)=>{
-    if (props.error) {
-      return 'border-bottom: solid 1.5px red;';
-    }
-  }}
-
+  margin: ${formItemMargin};
+  background-color: ${COLORS.brown};
+  
   :disabled {
-    background-color: ${COLORS.paper};
+    border-color: ${COLORS.brown};
   }
 `;
 
@@ -78,7 +77,8 @@ export const Submit = styled.input`
   width: fit-content;
   padding: 5px;
   margin: 0 5px 5px 0;
-  background-color: ${COLORS.paper};
+  background-color: ${COLORS.lightBlue};
+  font-size: 1em;
   color: black;
   cursor: pointer;
   border: none;
@@ -86,6 +86,5 @@ export const Submit = styled.input`
   :hover{
     background-color: lightgray;
   }
-
 
 `;

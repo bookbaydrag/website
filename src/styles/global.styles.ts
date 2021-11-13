@@ -6,6 +6,7 @@ export const COLORS = {
   lightBlue: '#74d7ec',
   pink: '#ffafc7',
   paper: '#fbf9f5',
+  red: '#ff0000',
 };
 
 const GlobalStyles = createGlobalStyle`   
