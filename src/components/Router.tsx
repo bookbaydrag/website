@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import Account from '../pages/Account';
+import Home from '../pages/Home';
 import Personas from '../pages/Personas';
-import Search from '../pages/Search';
 
 function Router() {
   return (
@@ -22,23 +22,23 @@ function Router() {
         <Personas />
       </Route>
 
-      <Route path={[
+      {/* <Route path={[
         '/e/:slug/:id',
         '/e/:id',
         '/e',
       ]}>
-        <Personas />
-      </Route>
+        <Events />
+      </Route> */}
 
-      <Route path={[
+      {/* <Route path={[
         '/search/:term',
         '/search',
       ]}>
         <Search />
-      </Route>
+      </Route> */}
 
       <Route path="/">
-        <div>home</div>
+        <Home />
       </Route>
 
     </Switch>

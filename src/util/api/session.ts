@@ -9,6 +9,7 @@ export function useMagicLink(token: BBDToken) {
   const { replace } = useHistory();
   const dispatch = useAppDispatch();
 
+  // We'll only run this code if the token changes
   useEffect(()=>{
     async function handleToken() {
       if (token) {
@@ -48,6 +49,7 @@ export async function checkSession() {
 export async function logIn(token: string): Promise<BBDSession | null> {
   try {
     const res = await fetchBBD('sessions', 'POST', { body: { token } });
+    console.log(res.status);
     await validateSuccess(res);
     const session: BBDSession = await res.json();
     return session;

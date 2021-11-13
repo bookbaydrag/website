@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Body } from '../styles/body.styles';
 import { checkSession } from '../util/api/session';
 
 type BodyWrapperProps = {
@@ -12,9 +13,9 @@ function BodyWrapper({ children }: BodyWrapperProps) {
   }, []);
 
   return (
-    <div>
+    <Body>
       {children}
-    </div>
+    </Body>
   );
 }
 

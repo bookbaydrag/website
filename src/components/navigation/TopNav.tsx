@@ -1,27 +1,22 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import {
+  NavInset,
+  NavLink,
+  NavTitle,
+  NavWrapper,
+} from '../../styles/nav.styles';
 
-const NavWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const NavLink = styled.a`
-  height: 2em;
-  width: auto;
-  padding: 5px;
-  /* justify-content: center; */
-  text-decoration: none;
-  cursor: pointer;
-  /* color: white; */
-`;
 
 function TopNav() {
   return (
     <NavWrapper>
-      <Link to="/" component={NavLink}>Home</Link>
-      <Link to="/search" component={NavLink}>Search</Link>
-      <Link to="/account" component={NavLink}>Account</Link>
+      <NavInset>
+        <NavTitle>Book Bay Drag</NavTitle>
+        <Link to="/" component={NavLink}>Home</Link>
+        {/* <Link to="/search" component={NavLink}>Search</Link> */}
+        <Link to="/account" component={NavLink}>Account</Link>
+      </NavInset>
     </NavWrapper>
   );
 }
@@ -61,9 +56,6 @@ export const Title = styled.div`
 `;
 
 export const Text = styled.span`
-  text-family: noto-sans;
-  text-font: regular 400;
-  text-size: 10px;
   text-decoration: none;
 `;
 
@@ -73,7 +65,7 @@ export const Menu = styled.div`
 
 export const Icon = styled.img`
   justify-content: flex-end;
-  align-item: flex-start;
+  align-items: flex-start;
 `;
 
 export const DropDown = styled.div`

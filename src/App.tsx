@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import TopNav from './components/navigation/TopNav';
-import GlobalStyles from './styles/GlobalStyles';
+import GlobalStyles from './styles/global.styles';
 import Router from './components/Router';
 import { Provider } from 'react-redux';
 import store from './util/store';
