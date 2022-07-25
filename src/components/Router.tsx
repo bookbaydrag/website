@@ -1,26 +1,17 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Account from '../pages/Account';
 import Home from '../pages/Home';
 import Personas from '../pages/Personas';
 
 function Router() {
   return (
-    <Switch>
+    <Routes>
+      <Route path="/account" element={<Account />} />
+      <Route path="/account/:token" element={<Account />} />
 
-      <Route path={[
-        '/account/:token',
-        '/account',
-      ]}>
-        <Account />
-      </Route>
-
-      <Route path={[
-        '/persons/:slug/:id',
-        '/persons/:id',
-        '/persons',
-      ]}>
-        <Personas />
-      </Route>
+      <Route path="/persons" element={<Personas />} />
+      <Route path="/persons/:id" element={<Personas />} />
+      <Route path="/persons/:slug/:id" element={<Personas />} />
 
       {/* <Route path={[
         '/e/:slug/:id',
@@ -37,11 +28,9 @@ function Router() {
         <Search />
       </Route> */}
 
-      <Route path="/">
-        <Home />
-      </Route>
+      <Route path="/" element={<Home />} />
 
-    </Switch>
+    </Routes>
   );
 };
 

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { fetchBBD, validateSuccess } from './etc';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { getSession, setSession, setSessionReducer } from '../store';
 import { BBDSession, BBDToken } from '../types';
 
 export function useMagicLink(token: BBDToken) {
-  const { replace } = useHistory();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   // We'll only run this code if the token changes
@@ -15,7 +15,7 @@ export function useMagicLink(token: BBDToken) {
       if (token) {
         const session = await logIn(token);
         dispatch(setSessionReducer(session));
-        replace('/account');
+        navigate('/account', { replace: true });
       }
     }
 

@@ -10,7 +10,7 @@ type PersonsParams = {
 function Personas() {
   const { slug, id } = useParams<PersonsParams>();
 
-  useNoIdRedirect(id);
+  useNoIdRedirect(id!);
 
   return (
     <div>
