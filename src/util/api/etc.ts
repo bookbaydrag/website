@@ -17,7 +17,7 @@ export async function validateSuccess(res: Response) {
 }
 
 export class ServerError extends Error {
-  private _statusCode: number
+  private _statusCode: number;
 
   constructor(status: number, message?: string) {
     if (!message) {

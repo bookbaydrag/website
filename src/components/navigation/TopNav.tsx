@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   NavInset,
-  NavLink,
   NavTitle,
   NavWrapper,
 } from '../../styles/nav.styles';
@@ -13,9 +12,9 @@ function TopNav() {
     <NavWrapper>
       <NavInset>
         <NavTitle>Book Bay Drag</NavTitle>
-        <Link to="/" component={NavLink}>Home</Link>
+        <Link to="/">Home</Link>
         {/* <Link to="/search" component={NavLink}>Search</Link> */}
-        <Link to="/account" component={NavLink}>Account</Link>
+        <Link to="/account">Account</Link>
       </NavInset>
     </NavWrapper>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { AppDispatch, RootState } from './store';
 
 export function useTitle(page: string, info?: string): string {
@@ -42,12 +42,12 @@ export function useDeBounce(
  * If there is no id, redirect to search
  * @param {string} id
  */
-export function useNoIdRedirect(id: string) {
-  const { replace } = useHistory();
+export function useNoIdRedirect(id?: string) {
+  const navigate = useNavigate();
 
   useEffect(()=>{
     if (!id) {
-      replace('/search');
+      navigate('/search', { replace: true });
     }
   }, [id]);
 }

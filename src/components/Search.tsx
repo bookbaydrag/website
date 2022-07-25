@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import PersonaCard from './PersonaCard';
 import {
   Fieldset,
@@ -21,7 +21,7 @@ function Search() {
   const [searchResults, setSearchResults] = useState([]);
   const [runningSearch, setRunningSearch] = useState(false);
   const searchQuery = useQuery('search');
-  const { replace } = useHistory();
+  const navigate = useNavigate();
   const title = useTitle('Search', searchTerm);
 
   useEffect(()=>{
@@ -32,10 +32,10 @@ function Search() {
 
   useEffect(()=>{
     if (searchTerm.length) {
-      replace(`/?search=${searchTerm}`);
+      navigate(`/?search=${searchTerm}`, { replace: true });
       search();
     } else {
-      replace('/');
+      navigate('/', { replace: true });
       setSearchResults([]);
     }
   }, [searchTerm]);
