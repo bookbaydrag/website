@@ -1,18 +1,17 @@
-import { SectionHeading } from '../styles/global.styles';
-import { Page, Section } from '../styles/pages.styles';
 import Search from '../components/Search';
+import { Container, Row } from 'react-bootstrap';
 
 function Home() {
   return (
-    <Page>
-      <Section>
-        <SectionHeading>Welcome to Book Bay Drag</SectionHeading>
-      </Section>
-      <Section>
-        <SectionHeading>Search</SectionHeading>
+    <Container>
+      <Row>
+        <h1 className='header'>Welcome to Book Bay Drag</h1>
+      </Row>
+      <Row>
+        <h1 className='header'>Search</h1>
         <Search />
-      </Section>
-    </Page>
+      </Row>
+    </Container>
   );
 }
 

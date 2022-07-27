@@ -1,11 +1,4 @@
 import { FormEventHandler, useState } from 'react';
-import {
-  Fieldset,
-  Form,
-  Label,
-  Submit,
-  TextInput,
-} from '../../styles/form.styles';
 import { requestMagicLink } from '../../util/api/account';
 
 function Login() {
@@ -26,10 +19,10 @@ function Login() {
 
   if (!submitted) {
     return (
-      <Form onSubmit={requestLink}>
-        <Fieldset flexDirection='column'>
-          <Label htmlFor='email'>Email</Label>
-          <TextInput
+      <form onSubmit={requestLink}>
+        <fieldset>
+          <label htmlFor='email'>Email</label>
+          <input
             type="email"
             id="login-email"
             name="email"
@@ -39,26 +32,26 @@ function Login() {
             }}
             autoComplete="email"
           />
-          <Submit
+          <input
             type="submit"
             id="login-submit"
             name="submit"
             value="Request Email Link"
           />
-        </Fieldset>
-      </Form>
+        </fieldset>
+      </form>
     );
   } else {
     return (
-      <Form onSubmit={editEmail}>
-        <Label>Email sent to {email}</Label>
-        <Submit
+      <form onSubmit={editEmail}>
+        <label>Email sent to {email}</label>
+        <input
           type="submit"
           id="edit-email"
           name="submit"
           value="Edit Email Address"
         />
-      </Form>
+      </form>
     );
   }
 }
