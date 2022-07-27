@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { Button } from '../../styles/form.styles';
-import { SectionHeading } from '../../styles/global.styles';
-import { PersonaList } from '../../styles/persona.styles';
+import { Col } from 'react-bootstrap';
 import { newPersona } from '../../util/api/persona';
 import { logOut, useSession, validateSession } from '../../util/api/session';
 import PersonaCard from '../PersonaCard';
@@ -27,33 +25,33 @@ function AccountDetails() {
   return (
     <div>
       <div>{session.account.email}</div>
-      <Button
+      <button
         onClick={logOut}
       >
         Log Out
-      </Button>
-      <Button
+      </button>
+      <button
         onClick={validateSession}
       >
         Reload
-      </Button>
-      <SectionHeading>My Personas</SectionHeading>
-      <PersonaList>
+      </button>
+      <h1>My Personas</h1>
+      <Col>
         {personas}
-      </PersonaList>
-      <Button
+      </Col>
+      <button
         onClick={()=>setShowAdd(!showAdd)}
       >
         Add Persona
-      </Button>
+      </button>
       {showAdd ?
-      <PersonaList>
+      <Col>
         <PersonaCard
           personaData={newPersona}
           admin={true}
           cancel={()=>setShowAdd(false)}
         />
-      </PersonaList> :
+      </Col> :
       null
       }
     </div>

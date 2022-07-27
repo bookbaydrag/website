@@ -9,27 +9,12 @@ function Router() {
       <Route path="/account" element={<Account />} />
       <Route path="/account/:token" element={<Account />} />
 
-      <Route path="/persons" element={<Personas />} />
-      <Route path="/persons/:id" element={<Personas />} />
-      <Route path="/persons/:slug/:id" element={<Personas />} />
-
-      {/* <Route path={[
-        '/e/:slug/:id',
-        '/e/:id',
-        '/e',
-      ]}>
-        <Events />
-      </Route> */}
-
-      {/* <Route path={[
-        '/search/:term',
-        '/search',
-      ]}>
-        <Search />
-      </Route> */}
+      <Route path="/personas" element={<Personas />} />
+      <Route path="/personas/:id" element={<Personas />} />
+      <Route path="/personas/:slug/:id" element={<Personas />} />
 
       <Route path="/" element={<Home />} />
-
+      <Route path="*" element={<Home />} />
     </Routes>
   );
 };

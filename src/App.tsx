@@ -1,16 +1,15 @@
 import { BrowserRouter } from 'react-router-dom';
 import TopNav from './components/navigation/TopNav';
-import GlobalStyles from './styles/global.styles';
 import Router from './components/Router';
 import { Provider } from 'react-redux';
 import store from './util/store';
 import BodyWrapper from './components/BodyWrapper';
 import { Helmet } from 'react-helmet';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <GlobalStyles />
       <Provider store={store} >
         <Helmet>
           <title>Book Bay Drag</title>

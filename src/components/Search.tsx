@@ -2,19 +2,10 @@ import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import PersonaCard from './PersonaCard';
-import {
-  Fieldset,
-  Form,
-  Label,
-  // Submit,
-  TextInput,
-} from '../styles/form.styles';
-import { SectionHeading } from '../styles/global.styles';
-import { Page } from '../styles/pages.styles';
-import { PersonaList } from '../styles/persona.styles';
 import { fetchBBD, validateSuccess } from '../util/api/etc';
 import { useDeBounce, useQuery, useTitle } from '../util/hooks';
 import { BBDPersona } from '../util/types';
+import { Col, Container } from 'react-bootstrap';
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -65,34 +56,34 @@ function Search() {
   });
 
   return (
-    <Page>
+    <Container>
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <Form onSubmit={()=>{}}>
-        <Fieldset flexDirection='column'>
-          <Label htmlFor="search">Search</Label>
-          <TextInput
+      <form onSubmit={()=>{}}>
+        <fieldset>
+          <label htmlFor="search">Search</label>
+          <input
             type="text"
             name="search"
             onChange={searchTermChange}
             value={searchTerm}
           />
-        </Fieldset>
-      </Form>
+        </fieldset>
+      </form>
       {searchTerm.length ?
         <div>
-          <SectionHeading>Search Results</SectionHeading>
+          <h1 className='heading'>Search Results</h1>
           {runningSearch ?
             'Running Search' :
-            <PersonaList>
+            <Col>
               {list}
-            </PersonaList>
+            </Col>
           }
         </div> :
         null
       }
-    </Page>
+    </Container>
   );
 };
 

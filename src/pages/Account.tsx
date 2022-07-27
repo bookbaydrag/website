@@ -1,9 +1,9 @@
 // import { useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import AccountDetails from '../components/account/AccountDetails';
 import Login from '../components/account/Login';
-import { Page } from '../styles/pages.styles';
 import { useMagicLink, useSession } from '../util/api/session';
 import { RouteAccountParams } from '../util/types';
 
@@ -17,21 +17,21 @@ function Account() {
 
   if (session) {
     return (
-      <Page>
+      <Container>
         <Helmet>
           <title>Book Bay Drag - Account</title>
         </Helmet>
         <AccountDetails />
-      </Page>
+      </Container>
     );
   } else {
     return (
-      <Page>
+      <Container>
         <Helmet>
           <title>Book Bay Drag - Log In</title>
         </Helmet>
         <Login />
-      </Page>
+      </Container>
     );
   }
 }
