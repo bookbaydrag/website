@@ -1,6 +1,6 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const HOME_PATH = '/';
 const ACCOUNT_PATH = '/account';
