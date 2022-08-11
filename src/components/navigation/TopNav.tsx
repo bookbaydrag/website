@@ -13,11 +13,11 @@ function TopNav() {
   return (
     <Navbar expand={true}>
       <Container>
-        <Navbar.Brand>
-          <Link to={HOME_PATH}>
+        <LinkContainer to={HOME_PATH}>
+          <Navbar.Brand>
             Book Bay Drag
-          </Link>
-        </Navbar.Brand>
+          </Navbar.Brand>
+        </LinkContainer>
         <Nav>
           <LinkContainer to={ACCOUNT_PATH}>
             <Nav.Link active={pathname===ACCOUNT_PATH}>
