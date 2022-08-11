@@ -7,6 +7,7 @@ module.exports = {
     'plugin:react/recommended',
     'google',
   ],
+  'ignorePatterns': ['node_modules', 'build'],
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
     'ecmaFeatures': {
