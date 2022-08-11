@@ -1,23 +1,32 @@
-import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Link, useLocation } from 'react-router-dom';
+
+const HOME_PATH = '/';
+const ACCOUNT_PATH = '/account';
 
 function TopNav() {
   // Header with site title as a link to the homepage
   // on the left and link to account page on the right
+  const { pathname } = useLocation();
 
   return (
-    <Row className="header">
-      <Col md={6}>
-        <Link to="/">
-          <h1>Book Bay Drag</h1>
-        </Link>
-      </Col>
-      <Col md={6}>
-        <Link to="/account">
-          <h1>Account</h1>
-        </Link>
-      </Col>
-    </Row>
+    <Navbar expand={true}>
+      <Container>
+        <Navbar.Brand>
+          <Link to={HOME_PATH}>
+            Book Bay Drag
+          </Link>
+        </Navbar.Brand>
+        <Nav>
+          <LinkContainer to={ACCOUNT_PATH}>
+            <Nav.Link active={pathname===ACCOUNT_PATH}>
+              Account
+            </Nav.Link>
+          </LinkContainer>
+        </Nav>
+      </Container>
+    </Navbar>
   );
 }
 
